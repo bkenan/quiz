@@ -1,0 +1,22 @@
+{% extends "quizzes/layout.html" %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'quizzes/quizview.js' %}" defer></script>
+{% endblock scripts %}
+
+{% block title %}
+{{obj.name}}
+{% endblock title %}
+
+{% block content %}
+<b>{{obj.name}}</b>
+<p>Required score to pass the quiz: {{obj.pass_score}}%</p>
+<form id="quiz-form" class="mb-2">
+    {% csrf_token %}
+    <div id="quiz-box"></div>
+    <button type="submit" class="btn-lg btn-primary">Save</button>
+</form>
+<div id="score-box"></div>
+<div id="result-box"></div>
+{% endblock content %}
